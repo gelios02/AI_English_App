@@ -1,0 +1,111 @@
+MDScreen:
+    name: "weakly_plan"
+    MDFloatLayout:
+        md_bg_color: 1, 1, 1, 1
+
+        canvas.before:
+            Color:
+                rgba: 0, 0, 1, 1  # Синий цвет границы прямоугольника
+            RoundedRectangle:
+                size: 280, 380
+                pos: 16, 110
+                radius: [20,]
+
+        canvas:
+            Color:
+                rgba: 1, 1, 1, 1  # Белый цвет заливки прямоугольника
+            RoundedRectangle:
+                size: 276, 376
+                pos: 18, 112
+                radius: [20,]
+
+        MDIconButton:
+            icon: "cog"
+            pos_hint: {"center_x": .9, "center_y": .95}
+            on_press:
+                root.manager.current = 'profile'
+                app.get_name_from_firebase()
+
+        MDLabel:
+            id: DayLabel
+            text: "DAY 1"
+            font_name: "BPoppins"
+#            font_style: "Body1"
+            theme_text_color: "Primary"
+            pos_hint: {"center_x": 0.49, "center_y": 0.81}
+            size_hint_x: 0.8  # Установка пропорции ширины
+            text_size: self.width, None
+
+        MDLabel:
+            id: plan_label
+            text: "1. Review basic grammar rules related to sentence structure, verb tenses, and subject-verb agreement.\n2. Practice writing simple sentences using the grammar rules reviewed.\n3. Read a short article or write a paragraph on a familiar topic and focus on incorporating the grammar rules into your writing.\n4. Complete a writing exercise focusing on using conjunctions to combine sentences effectively."
+            font_name: "MPoppins"
+            font_size: "13sp"
+            size_hint: None, None
+            size: self.texture_size
+            width: root.width * 0.8  # Ширина текста будет равна 80% ширины окна
+            pos_hint: {"center_x": .48, "center_y": .49}
+            color: rgba(34, 34, 34, 255)
+            text_size: self.width, None
+            halign: "left"
+            valign: "top"
+            markup: True
+
+
+
+
+
+
+
+
+
+
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {"center_x": 0.05, "center_y": 0.95}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: rgba(26, 24, 58, 255)
+            on_press: root.manager.current = 'start_use'
+
+        MDIconButton:
+            id: cardright
+            icon: "arrow-right"
+            pos_hint: {"center_x": 0.8, "center_y": 0.13}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: rgba(26, 24, 58, 255)
+            on_press: app.on_right_arrow_press_plan()
+            opacity: 1
+            disabled: False
+
+        MDIconButton:
+            id: cardleft
+            icon: "arrow-left"
+            pos_hint: {"center_x": 0.2, "center_y": 0.13}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: rgba(26, 24, 58, 255)
+            on_press: app.on_left_arrow_press_plan()
+            opacity: 0
+            disabled: True
+
+        MDLabel:
+            id: result_label
+            text: "You missed the questions:"
+            font_name: "MPoppins"
+            font_size: "12sp"
+            size_hint_x: .85
+            pos_hint: {"center_x": .5, "center_y": .08}
+            halign: "center"
+            opacity: 0
+        MDLabel:
+            id: result_label1
+            font_name: "MPoppins"
+            font_size: "10sp"
+            size_hint_x: .85
+            pos_hint: {"center_x": .5, "center_y": .04}
+            halign: "center"
+            opacity: 0
+
+

@@ -1,0 +1,60 @@
+MDScreen:
+    name: "start_use"
+    MDFloatLayout:
+        md_bg_color: 1,1,1,1
+        Image:
+            source: "assets/logo.png"
+            pos_hint: {"center_x": .22, "center_y": .95}
+        MDIconButton:
+            icon: "cog"
+            pos_hint: {"center_x": .9, "center_y": .9}
+            on_press:
+                root.manager.current = 'profile'
+                app.get_name_from_firebase()
+        Image:
+            source: "assets/recommendations.png"
+            size_hint: .8, .8
+            pos_hint: {"center_x": .5, "center_y": .65}
+        MDLabel:
+            text: "Let's evaluate your English !"
+            font_name: "BPoppins"
+            font_size: "23sp"
+            pos_hint: {"center_y": .38}
+            halign: "center"
+            color: rgba(34, 34, 34, 255)
+        MDLabel:
+            text: "We will check your English level and give you recommendations"
+            font_name: "MPoppins"
+            font_size: "13sp"
+            size_hint_x: .85
+            pos_hint: {"center_x": .5, "center_y": .28}
+            halign: "center"
+            color: rgba(127, 127, 127, 255)
+        MDLabel:
+            id: wait
+            text: "Please wait we're prepare your test with AI"
+            font_name: "MPoppins"
+            font_size: "11sp"
+            size_hint_x: .85
+            pos_hint: {"center_x": .5, "center_y": .1}
+            halign: "center"
+            opacity: 0
+            color: rgba(144, 136, 0, 255)
+        Button:
+            text: "Let's go"
+            size_hint: .66, .065
+            pos_hint: {"center_x": .5, "center_y": .18}
+            background_color: 0, 0, 0, 0
+            font_name: "BPoppins"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.manager.current = "questionnaire_test"
+
+                app.load_questionnaire()
+            canvas.before:
+                Color:
+                    rgb: rgba(52, 0, 231, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [5]

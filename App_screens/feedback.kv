@@ -1,0 +1,61 @@
+MDScreen:
+    name: "feedback"
+    MDFloatLayout:
+        md_bg_color: 1, 1, 1, 1
+
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {"center_x": 0.05, "center_y": 0.95}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: rgba(26, 24, 58, 255)
+            on_press: root.manager.current = 'start_use'
+        MDIconButton:
+            id: cardright
+            icon: "arrow-right"
+            pos_hint: {"center_x": 0.8, "center_y": 0.13}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: rgba(26, 24, 58, 255)
+            on_release:
+                root.manager.current = 'education_plan'
+
+        Image:
+            source: "assets/level.png"
+            size_hint: .8, .8
+            pos_hint: {"center_x": .5, "center_y": .65}
+        MDLabel:
+            text: "We have assessed your English proficiency, it is"
+            font_name: "BPoppins"
+            font_size: "14sp"
+            size_hint_x: .8
+            pos_hint: {"center_x": .48, "center_y": .38}
+#            halign: "center"
+            color: rgba(34, 34, 34, 255)
+        MDLabel:
+            id: level
+            text: "[u]Upper Intermediate[/u]"
+            font_name: "BPoppins"
+            font_size: "15sp"
+            pos_hint: {"center_x": .97, "center_y": .365}
+            color: rgba(34, 34, 34, 255)
+            markup: True
+        MDLabel:
+            text: "Our recommendations for you:"
+            font_name: "MPoppins"
+            font_size: "13sp"
+            size_hint_x: .8
+            pos_hint: {"center_x": .48, "center_y": .28}
+#            halign: "center"
+            color: rgba(127, 127, 127, 255)
+        MDLabel:
+            id: recommendations
+            text: "[u]Practice speaking and listening more to improve fluency and confidence.[/u]"
+            font_name: "MPoppins"
+            font_size: "13sp"
+            size_hint_x: .8
+            pos_hint: {"center_x": .48, "center_y": .23}
+#            halign: "center"
+            color: rgba(127, 127, 127, 255)
+            markup: True
+

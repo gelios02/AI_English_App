@@ -1,0 +1,202 @@
+MDScreen:
+    name: "questionnaire_test"
+    MDFloatLayout:
+        md_bg_color: 1, 1, 1, 1
+
+        canvas.before:
+            Color:
+                rgba: 0, 0, 1, 1  # Синий цвет границы прямоугольника
+            RoundedRectangle:
+                size: 280, 380
+                pos: 16, 110
+                radius: [20,]
+
+        canvas:
+            Color:
+                rgba: 1, 1, 1, 1  # Белый цвет заливки прямоугольника
+            RoundedRectangle:
+                size: 276, 376
+                pos: 18, 112
+                radius: [20,]
+
+        MDLabel:
+            id: questionLabel
+            text: ""
+            font_style: "Body1"
+            theme_text_color: "Primary"
+            pos_hint: {"center_x": 0.49, "center_y": 0.76}
+            size_hint_x: 0.8  # Установка пропорции ширины
+            text_size: self.width, None
+
+        MDFloatLayout:
+    # Это создаст круглый флажок
+            MDCheckbox:
+                id: checkbox1
+                group: 'group'
+
+                # Установка размеров флажка
+                size_hint: None,None
+                size: "38dp", "38dp"
+                active: False
+                # Установка расположения флажка
+                pos_hint: {'center_x': .12, 'center_y': .62}
+                on_active: app.on_checkbox_press(1)
+
+            # Кнопка с текстом
+            MDTextButton:
+                id: checkButton1
+                text: "The sunset was very beautiful beautiful beautiful beautiful beautiful beautiful beautiful."
+                font_name: "BPoppins"
+                font_size: "10sp"
+                pos: 55, 352
+        #        color: rgba(52,0,231,255)
+                on_release:
+                    checkbox1.active = True
+                    on_active: app.on_checkbox_press(1)
+
+
+        MDFloatLayout:
+    # this will make a circular check box
+            MDCheckbox:
+                id: checkbox2
+                group: 'group'
+
+                # defining size of check box
+                size_hint: None,None
+                size: "38dp", "38dp"
+                active: False
+                # giving location
+                pos_hint: {'center_x': .12, 'center_y': .56}
+                on_active: app.on_checkbox_press(2)
+            MDTextButton:
+                id: checkButton2
+                text: "The sunset was very beautiful beautiful beautiful beautiful beautiful beautiful beautiful."
+                font_name: "BPoppins"
+                font_size: "10sp"
+                pos: 55, 316
+#                color: rgba(52,0,231,255)
+                on_release:
+                    checkbox2.active = True
+                    on_active: app.on_checkbox_press(2)
+        MDFloatLayout:
+    # this will make a circular check box
+            MDCheckbox:
+                id: checkbox3
+                group: 'group'
+
+                # defining size of check box
+                size_hint: None,None
+                size: "38dp", "38dp"
+                active: False
+                # giving location
+                pos_hint: {'center_x': .12, 'center_y': .50}
+                on_active: app.on_checkbox_press(3)
+            MDTextButton:
+                id: checkButton3
+                text: "The sunset was very beautiful beautiful beautiful beautiful beautiful beautiful beautiful."
+                font_name: "BPoppins"
+                font_size: "10sp"
+                pos: 55, 280
+    #            color: rgba(52,0,231,255)
+                on_release:
+                    checkbox3.active = True
+                    on_active: app.on_checkbox_press(3)
+        MDFloatLayout:
+    # this will make a circular check box
+            MDCheckbox:
+                id: checkbox4
+                group: 'group'
+
+                # defining size of check box
+                size_hint: None,None
+                size: "38dp", "38dp"
+                active: False
+                # giving location
+                pos_hint: {'center_x': .12, 'center_y': .44}
+                on_active: app.on_checkbox_press(4)
+
+            MDTextButton:
+                id: checkButton4
+                text: "The sunset was very beautiful beautiful beautiful beautiful beautiful beautiful beautiful."
+                font_name: "BPoppins"
+                font_size: "10sp"
+                pos: 55, 244
+    #            color: rgba(52,0,231,255)
+
+                on_release:
+                    checkbox4.active = True
+                    on_active: app.on_checkbox_press(4)
+
+
+
+
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {"center_x": 0.05, "center_y": 0.95}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: rgba(26, 24, 58, 255)
+            on_press: root.manager.current = 'start_use'
+
+        MDIconButton:
+            id: cardright
+            icon: "arrow-right"
+            pos_hint: {"center_x": 0.8, "center_y": 0.13}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: rgba(26, 24, 58, 255)
+            on_press: app.on_right_arrow_press()
+            opacity: 1
+            disabled: False
+
+        MDIconButton:
+            id: cardleft
+            icon: "arrow-left"
+            pos_hint: {"center_x": 0.2, "center_y": 0.13}
+            user_font_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: rgba(26, 24, 58, 255)
+            on_press: app.on_left_arrow_press()
+            opacity: 0
+            disabled: True
+
+        MDLabel:
+            id: result_label
+            text: "You missed the questions:"
+            font_name: "MPoppins"
+            font_size: "12sp"
+            size_hint_x: .85
+            pos_hint: {"center_x": .5, "center_y": .08}
+            halign: "center"
+            opacity: 0
+        MDLabel:
+            id: result_label1
+            font_name: "MPoppins"
+            font_size: "10sp"
+            size_hint_x: .85
+            pos_hint: {"center_x": .5, "center_y": .04}
+            halign: "center"
+            opacity: 0
+        Button:
+            id: check
+            text: "Check"
+            size_hint: .50, .065
+            pos_hint: {"center_x": 0.5, "center_y": 0.13}
+            background_color: 0, 0, 0, 0
+            font_name: "BPoppins"
+#            on_release: app.login()
+            canvas.before:
+                Color:
+                    rgb: rgba(52, 0, 231, 255)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [5]
+             # Добавленные строки для скрытия кнопки
+            opacity: 0
+            disabled: True
+            on_release:
+                root.manager.transition.direction = "left"
+#                root.manager.current = "feedback"
+                app.check_question_answered()
+
